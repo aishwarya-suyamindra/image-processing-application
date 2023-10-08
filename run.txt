@@ -1,0 +1,53 @@
+#load dog.ppm image and call it 'dog'
+load res\dog.ppm dog
+
+#create a greyscale using only the value component, as an image dog-greyscale
+greyscale value-component dog dog-value-greyscale
+
+#save dog-value-greyscale
+save res\dog-value-greyscale.ppm dog-value-greyscale
+
+#brighten dog by adding 50
+brighten 50 dog dog-brighter
+
+#save dog-brighter
+save res\dog-bright-50.ppm dog-brighter
+
+#draken dog by 20
+brighten -20 dog dog-dark
+
+#save dog-dark
+save res\dog-darken-20.ppm dog-dark
+
+#flip dog vertical
+vertical-flip dog dog-vertical
+
+#save dog-vertical
+save res\dog-vertical.ppm dog-vertical
+
+#flip dog horizontal
+horizontal-flip dog dog-horizontal
+
+#save dog-horizontal
+save res\dog-horizontal.ppm dog-horizontal
+
+#split dog
+rgb-split dog dog-red dog-green dog-blue
+
+#save dog-red
+save res\dog-red.ppm dog-red
+
+#save dog-green
+save res\dog-green.ppm dog-green
+
+#save dog-blue
+save res\dog-blue.ppm dog-blue
+
+#combine above split images to get base Image
+rgb-combine dog-combined dog-red dog-green dog-blue
+
+#save
+save res\dog-combined.ppm dog-combined
+
+#quit
+quit

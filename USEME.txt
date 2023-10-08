@@ -1,0 +1,54 @@
+
+The program accepts three command line arguments:
+
+1. Run a script file from command line:
+    '-file script-file-path' - This command runs the commands specified in the script file at the provided path and terminates the program.
+    If an invalid file path is specified - an error is displayed indicating that the file is invalid and the program terminates.
+    If incomplete arguments or any other unsupported arguments are passed - an error is displayed indicating that the arguments passed are invalid and the program terminates.
+
+
+ 2. Run in text interactive mode:
+    '-text' - When the program is run with this argument, its run in the interactive text mode and it waits for user input. Any of the below commands can be entered to interact with the program.To terminate the program, the quit command can be entered.
+    To run a script file, the command "run file-path" is to be entered when the program is run. If there is no quit command specified in the script file, the program waits for user inputs after the commands in the script file are executed. Further commands can be entered with via the console. To terminate the program on running a script, end the script file with the command "quit".
+
+
+The list of commands supported to run script file or in text interactive mode are:
+	1. load image-path image-name - This command loads the ppm image at the provided image-path and refers to it with image-name.
+	2. brighten value image-name resulting-image-name - This command brightens the image with image-name by the given value and refers to it with the resulting-image-name. A positive value brightens image, a negative value darkens the image.
+	3. horizontal-flip image-name resulting-image-name - This command flips the image image-name horizontally and refers to it with the resulting-image-name.
+	4. vertical-flip image-name resulting-image-name - This command flips the image image-name vertically and refers to it with the resulting-image-name.
+	5. save image-path image-name - This command saves the image image-name at image-path.
+	6. rgb-split image-name resulting-image-name-red resulting-image-name-green resulting-image-name-blue - This command splits the given image image-name into three grayscale images containing the red, green and blue components and refers to it by the given resulting names for the red, green and blue component images respectively.
+	7. rgb-combine image-name red-image green-image blue-image - This command combines the given greyscale red-image, green-image, blue-image into a combined image and refers to it by the given image-name.
+	8. greyscale value-component image-name resulting-image-name - This command creates a greyscale image with the maximum value of the components of image-name and refers to it with the given resulting-image-name.
+	9. greyscale red-component image-name resulting-image-name - This command creates a greyscale image with the red component of image-name and refers to it with the given resulting-image-name.
+	10. greyscale green-component image-name resulting-image-name - This command creates a greyscale image with the green component of image-name and refers to it with the given resulting-image-name.
+	11. greyscale blue-component image-name resulting-image-name - This command creates a greyscale image with the blue component of image-name and refers to it with the given resulting-image-name.
+	12. greyscale luma-component image-name resulting-image-name - This command creates a greyscale image with the weighted sum of the components of image-name and refers to it with the given resulting-image-name.
+	13. greyscale intensity-component image-name resulting-image-name - This command creates a greyscale image with the average of the components of image-name and refers to it with the given resulting-image-name.
+	14. blur image-name resulting-image-name - This command blurs the image image-name and refers to it with the resulting-image-name.
+	15. sepia image-name resulting-image-name - This command creates a sepia toned image of image-name and refers to it with the resulting-image-name.
+	16. sharpen image-name resulting-image-name - This commands sharpens the image image-name and refers to it with the resulting-image-name.
+	17. dither image-name resulting-image-name - This colour transformation command dithers the image image-name and refers to it with the resulting-image-name.
+	18. greyscale  image-name resulting-image-name - This colour transformation command creates a greyscale image with the weighted sum of the components of image-name (luma) by default and refers to it with the given resulting-image-name.
+	19. quit - This command terminates the program.
+	20. run script-file-path - This command reads the commands from the given file at script-file-path and executes the commands. It can contain any of the above commands. This command is supported only in text interactive mode.
+
+To work with images and perform operations on them, the load command needs to be run first. If the load command is not run first and other commands are executed, an error is displayed indicating that the image with the given name cannot be found. In these scenarios, the appropriate error is message is displayed. The program does not terminate and the user can continue to provide input.
+
+3. Graphical User Interface(Default) : When the program is launched without any additional arguments, the Graphical User Interface is displayed, allowing the user to manipulate images using the interface.
+    Initially, when the GUI is opened, it has two panels: the Image panel and the Histogram panel. The Image panel includes a button to allow the user to load an image and display the image. The Histogram panel is used to display the histogram of the current image. The histogram shows 256 levels versus the frequency of each value for the three color components (Red, Green, Blue) and Intensity (average of the three components). The histogram automatically updates when the current image is manipulated.
+    Once the user loads the first image, the options panel is made visible. This panel offers image manipulation operations such as:
+        1. Load - After loading the first image, if the user wants to work with a new image, they can use this option. On click, the user is presented with a file chooser, which can be used to navigate to select the new valid image file. If the selected file is not of a supported format, an appropriate error message is displayed.
+        2. Save - This allows the user to save the current image. On click, the user is presented with a file chooser, which can be used to navigate to the required path and provide the filename. They must save the image with one of the supported extensions. If the user provides an invalid filename or selects an unsupported file format, an error message is displayed. If the image is saved successfully, a success message is displayed to indicate the same. The user can then continue to work with the current image.
+        3. Dither - This option allows the user to dither the image. On click, the current image is dithered and the resulting image is displayed in the image Panel. The histogram in the histogram panel is updated simultaneously.
+        4. Blur - This option allows the user to blur the image. On click, the current image is blurred and the resulting image is displayed in the image Panel. The histogram in the histogram panel is updated simultaneously.
+        5. Sharpen - This option allows the user to sharpen the image. On click, the current image is sharpened and the resulting image is displayed in the image Panel. The histogram in the histogram panel is updated simultaneously.
+        6. Sepia - This option allows the user to sepia tone the image. On click, the current image is sepia toned and the resulting image is displayed in the image Panel. The histogram in the histogram panel is updated simultaneously.
+        7. Greyscale - This option is used to greyscale the image. On click, the user is presented with a pop-up, displaying the various ways to greyscale the image as a list of radio buttons. Once the user selects any one of the option and clicks OK, the current image is greyscaled and the image panel and histogram panel are updated accordingly. If none of the radio options are selected and the user simply clicks OK or the user dismisses the dialog, there is no action taken on the image.
+        8. Flip - This option allows the user to flip the image vertically or horizontally. On click, the user is presented with a pop-up, displaying the option to flip the image vertically or horizontally. Once the user selects any one of the option and clicks OK, the current image is flipped and the image panel and histogram panel are updated accordingly. If none of the radio options are selected and the user simply clicks OK or the user dismisses the dialog, there is no action taken on the image.
+        9. Brighten - This option allows the user to brighten or darken the image by specifying an integer value. Positive value brightens the image while negative value darkens the image. On click, the user is presented with a text dialog box. Once the user enters a valid integer and clicks OK, the image is brightened/darkened by the given amount and the image and histogram panels are updated. If the user enters a non-integer value, an appropriate error message is displayed, informing the same to the user.
+        10. Combine - This option allows the user to combine three images. The resulting image is created by combining the RGB components of the given three images respectively. On click, a file chooser is displayed which allows the user to select three image files. Once the user selects three files and clicks 'Open', the image and histogram are updated with the new combined image. If the user selects less than three valid image files or if any of the selected files are not of supported formats, an error message is displayed.
+        11. Split - This option allows the user to split the current image into three greyscale images containing the red, green and blue components and saves them with the given name. On click, the user is presented with a dialog box containing three text fields. The user must enter the names with which the greyscaled images must be saved and click OK. They can provide a path relative to the current working directory. Once the images are saved, a success message is displayed to the user. The current image remains as is. If the user wishes to work with one of the split images, they can use the Load option to load the image to be manipulated. If the user provides invalid filenames or unsupported file format, an error message is displayed.
+
+    The GUI does not support the run command as in text based interaction.

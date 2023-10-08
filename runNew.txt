@@ -1,0 +1,35 @@
+# load sea-turtle.png and call it turtle
+load res\sea-turtle.png turtle
+
+#create a greyscale of the image and call it turtle-greyscale
+greyscale turtle turtle-greyscale
+
+#create a sepia toned image of turtle and call it turtle-sepia
+sepia turtle turtle-sepia
+
+#blur turtle and call it turtle-blur
+blur turtle turtle-blur
+
+#sharpen turtle and call it turtle-sharp
+sharpen turtle turtle-sharp
+
+#dither turtle and call it turtle-dither
+dither turtle turtle-dither
+
+#save turtle-greyscale in png format
+save res\turtle-greyscale.png turtle-greyscale
+
+#save turtle-sepia in png format
+save res\turtle-sepia.png turtle-sepia
+
+#save turtle-blur in png format
+save res\turtle-blur.png turtle-blur
+
+#save turtle-sharp in png format
+save res\turtle-sharp.png turtle-sharp
+
+#save turtle-dither in png format
+save res\turtle-dither.png turtle-dither
+
+#quit
+quit
